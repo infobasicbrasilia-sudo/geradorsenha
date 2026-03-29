@@ -1,0 +1,79 @@
+:root {
+    --bg-main: #0a0a0c;
+    --card-bg: rgba(18, 18, 22, 0.95);
+    --accent: #a855f7; /* Roxo */
+    --success: #10b981; /* Verde Maduros */
+    --border: #27272a;
+    --text: #e4e4e7;
+    --text-muted: #a1a1aa;
+}
+
+body {
+    /* REMOÇÃO DE MARCAS D'ÁGUA: Overlay de gradiente sobre o GIF */
+    /* Isso escurece o GIF e oculta qualquer logo ou texto visual do fundo */
+    background: 
+        radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(10,10,12,0.9) 100%),
+        url('../splash.gif') no-repeat center center fixed;
+    
+    background-size: cover; /* Garante que o GIF cubra toda a tela */
+    color: var(--text);
+    font-family: 'Inter', -apple-system, sans-serif;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    min-height: 100vh; margin: 0;
+}
+
+.security-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 35px; border-radius: 12px;
+    width: 90%; max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    text-align: center;
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+    margin-bottom: 20px; /* Espaço para o rodapé abaixo */
+}
+
+.logo-bsbia { max-width: 80px; height: auto; margin: 0 auto 15px auto; display: block; }
+.badge { font-size: 0.65rem; font-weight: 800; color: var(--accent); border: 1px solid var(--accent); padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 12px; letter-spacing: 1px; }
+header h1 { font-size: 1.4rem; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
+header p { font-size: 0.85rem; color: var(--text-muted); margin: 5px 0 20px 0; }
+
+.password-box {
+    background: rgba(0, 0, 0, 0.7); border: 1px solid var(--border);
+    padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace;
+    font-size: 1.1rem; color: var(--accent); margin: 25px 0;
+    overflow-wrap: break-word; word-break: break-all; min-height: 1.2em;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.cyber-select {
+    background: #000; color: var(--text); border: 1px solid var(--border);
+    padding: 12px; width: 100%; border-radius: 6px; margin-bottom: 20px;
+}
+
+.btn-primary {
+    background: var(--accent); color: white; border: none;
+    padding: 18px; width: 100%; border-radius: 6px;
+    font-weight: 700; cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Estado de Sucesso (Cópia) */
+.btn-primary.is-copy-mode {
+    background: var(--success) !important;
+}
+
+.btn-primary:hover { filter: brightness(1.2); }
+.footer-stats { margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--border); opacity: 0.7; }
+
+/* ESTILO DO RODAPÉ FINAL */
+.main-footer {
+    width: 100%; text-align: center;
+    padding: 15px 0; font-size: 0.75rem;
+    color: rgba(228, 228, 231, 0.6); /* Cor do texto-muted, discreta */
+    background: rgba(10, 10, 12, 0.8); /* Fundo escuro sutil */
+    border-top: 1px solid rgba(39, 39, 42, 0.4); /* Linha divisória sutil */
+    position: fixed; bottom: 0; left: 0;
+}
+.main-footer p { margin: 0; }

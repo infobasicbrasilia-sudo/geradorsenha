@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        font-src https://fonts.gstatic.com; 
+        script-src 'self' 'unsafe-inline' https://contador.s12.com.br; 
+        img-src 'self' data: https://contador.s12.com.br;">
+    
+    <title>BSBiA | Protocolo de Alta Entropia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="security-container">
+        <header class="security-header">
+            <img src="BSBiA.png" alt="Logo BSBiA" class="logo-bsbia">
+            <div class="badge">SISTEMA  POR ALUNOS</div>
+            <h1>GERADOR DE ESCUDOS</h1>
+            <p>Protocolo de Segurança Digital BRASIL IA</p>
+        </header>
+
+        <section class="display-area">
+            <div id="passwordOutput" class="password-box" aria-live="polite">••••••••••••</div>
+        </section>
+
+        <section class="controls">
+            <label for="passLength">Comprimento da Chave:</label>
+            <select id="passLength" class="cyber-select">
+                <option value="16">16 Caracteres</option>
+                <option value="32" selected>32 Caracteres</option>
+                <option value="64">64 Caracteres</option>
+            </select>
+            
+            <button id="mainBtn" class="btn-primary">GERAR SENHA</button>
+        </section>
+
+        <div class="footer-stats">
+            <div align="center">
+                <a href='https://contador.s12.com.br'>
+                    <img src='https://contador.s12.com.br/img-z6BW775c90bW5D9y-3.gif' border='0' alt='contador de visitas'>
+                </a>
+                <script type='text/javascript' src='https://contador.s12.com.br/ad.js?id=z6BW775c90bW5D9y'></script>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>Desenvolvido pelos Alunos de Informática Básica 2026.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
