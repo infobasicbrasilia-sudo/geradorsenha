@@ -10,38 +10,62 @@ document.addEventListener('DOMContentLoaded', () => {
     function gerarSenha(tamanho) {
         const charset = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*()_-+=";
         let resultado = "";
-        const valores = new Uint32Array(tamanho);
-        window.crypto.getRandomValues(valores);
+        const valoresAleatorios = new Uint32Array(tamanho);
+        window.crypto.getRandomValues(valoresAleatorios);
         for (let i = 0; i < tamanho; i++) {
-            resultado += charset[valores[i] % charset.length];
+            resultado += charset[valoresAleatorios[i] % charset.length];
         }
         return resultado;
     }
 
+    async function copiarTexto(texto) {
+        // Tenta o método moderno
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(texto);
+                return true;
+            } catch (err) {
+                console.warn("Clipboard API falhou, tentando fallback...");
+            }
+        }
+        
+        // Fallback manual para iframes
+        const textArea = document.createElement("textarea");
+        textArea.value = texto;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            return successful;
+        } catch (err) {
+            document.body.removeChild(textArea);
+            return false;
+        }
+    }
+
     if (mainBtn) {
-        mainBtn.addEventListener('click', () => {
+        mainBtn.addEventListener('click', async () => {
             if (!isReadyToCopy) {
-                // ETAPA 1: GERAR
                 const tamanho = parseInt(seletorTamanho.value);
                 campoSenha.textContent = gerarSenha(tamanho);
-                
-                // Muda para modo copiar
                 isReadyToCopy = true;
                 mainBtn.classList.add('is-copy-mode');
                 mainBtn.textContent = "COPIAR SENHA 🛡️";
             } else {
-                // ETAPA 2: COPIAR
-                const senha = campoSenha.textContent;
-                navigator.clipboard.writeText(senha).then(() => {
+                const sucesso = await copiarTexto(campoSenha.textContent);
+                if (sucesso) {
                     mainBtn.textContent = "COPIADO!";
-                    
-                    // Reseta após 2 segundos
                     setTimeout(() => {
                         isReadyToCopy = false;
                         mainBtn.classList.remove('is-copy-mode');
                         mainBtn.textContent = "GERAR SENHA";
                     }, 2000);
-                });
+                }
             }
         });
     }

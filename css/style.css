@@ -33,7 +33,7 @@ body {
     margin-bottom: 20px; /* Espaço para o rodapé abaixo */
 }
 
-.logo-bsbia { max-width: 80px; height: auto; margin: 0 auto 15px auto; display: block; }
+.logo-bsbia { max-width: 180px; height: auto; margin: 0 auto 15px auto; display: block; }
 .badge { font-size: 0.65rem; font-weight: 800; color: var(--accent); border: 1px solid var(--accent); padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 12px; letter-spacing: 1px; }
 header h1 { font-size: 1.4rem; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
 header p { font-size: 0.85rem; color: var(--text-muted); margin: 5px 0 20px 0; }
